@@ -9,7 +9,7 @@ my nvim config
 
 # dependencies
 ## windows
-- c compiler: download binaries here https://github.com/skeeto/w64devkitl, unzip and add to PATHs
+- c compiler: download binaries here https://github.com/skeeto/w64devkit, unzip and add to PATHs
 - grep: download binaries here https://github.com/burntsushi/ripgrep and here https://github.com/sharkdp/fd, unzip and add to PATHs
 - 
 
