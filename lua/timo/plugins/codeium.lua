@@ -6,7 +6,3 @@ return {
         vim.g.codeium_idle_delay = 500     -- Set the idle delay (in milliseconds)
     end,
 }
--- return {
---    'Exafunction/codeium.vim',
---    event = 'BufEnter',
---}
