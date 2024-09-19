@@ -4,8 +4,9 @@ my nvim config
 # how to use
 1. install nvim from here https://github.com/neovim/neovim/releases/nightly
 2. (windows) clone repo into `$env:LOCALAPPDATA\nvim`
-2. (linux) clone repo into `~/.config/nvim`
+2. (linux/mac) clone repo into `~/.config/nvim`
 4. open nvim via `nvim .`
+5. `TODO` set nerdfont in terminal window
 
 # dependencies
 ## windows
