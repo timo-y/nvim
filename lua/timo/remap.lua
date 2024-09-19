@@ -1,5 +1,5 @@
 -- Open file explorer
-vim.keymap.set("n", "<leader>pm", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pm", "<cmd>Neotree position=current<CR>")
 
 -- Quit Neovim
 vim.keymap.set("n", "<leader>eq", "<cmd>q<CR>")
