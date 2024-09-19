@@ -1,5 +1,5 @@
 require('toggleterm').setup({
-    open_mapping = [[<leader>sh]],
+    open_mapping = [[<C-x>]],
     autochdir = true,
     direction = 'float',
 })
