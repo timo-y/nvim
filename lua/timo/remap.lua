@@ -58,3 +58,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Open floating window with diagnostics
 vim.keymap.set("n", "<leader>h", vim.diagnostic.open_float)
+
+-- Open Quickfix
+vim.keymap.set("n", "<leader>o", vim.cmd.copen)
