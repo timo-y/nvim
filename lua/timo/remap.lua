@@ -1,5 +1,5 @@
 -- Open file explorer
-vim.keymap.set("n", "<leader>pm", "<cmd>Neotree position=current<CR>")
+vim.keymap.set("n", "<leader>pm", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- Quit Neovim
 vim.keymap.set("n", "<leader>eq", "<cmd>q<CR>")
