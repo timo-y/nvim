@@ -1,8 +1,8 @@
 require('toggleterm').setup({
-    size = 55,
+    size = 15,
     open_mapping = [[<C-x>]],
     autochdir = true,
-    direction = 'vertical',
+    direction = 'horizontal',
 })
 
 function _G.set_terminal_keymaps()
