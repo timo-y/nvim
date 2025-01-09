@@ -58,42 +58,36 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Find files containing word under cursor and perform replacement in quickfix list
 vim.keymap.set("n", "<leader>pr", function()
-    -- Get the word under the cursor
     local current_word = vim.fn.expand("<cword>")
 
-    -- Prompt the user to edit the search word
     local search_word = vim.fn.input("Search for (default: " .. current_word .. "): ", current_word)
     if search_word == "" then
-        -- If the user doesn't input anything, use the original word
         search_word = current_word
     end
 
-    -- Perform the vimgrep search
-    vim.cmd(string.format("vimgrep /%s/gj */**", search_word))
+    local search_pattern = vim.fn.input("Search pattern (default: **/*, i.e. Python files: **/*.py): ", "**/*")
+    if search_pattern == "" then
+        search_pattern = "**/*"
+    end
 
-    -- Open the quickfix list
+    vim.cmd(string.format("vimgrep /%s/gj %s", search_word, search_pattern))
+
     vim.cmd("copen")
 
-    -- Prompt the user to edit the replacement word
     local replace_word = vim.fn.input("Replace with (default: " .. search_word .. "): ", search_word)
     if replace_word == "" then
-        -- If the user doesn't input anything, use the search word
         replace_word = search_word
     end
 
-    -- Check if search_word and replace_word are the same
     if search_word == replace_word then
         vim.cmd("echo 'Search word and replace word are the same. No changes made.'")
         return
     end
 
-    -- Build the replacement command
     local replace_cmd = string.format("cfdo %%s/%s/%s/gc | update", search_word, replace_word)
 
-    -- Execute the replacement command
     vim.cmd(replace_cmd)
-end, { desc = "Search and replace for word under cursor with editable prompts" })
-
+end, { desc = "Search and replace for word under cursor with editable prompts and pattern" })
 
 
 -- Open floating window with diagnostics
