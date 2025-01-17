@@ -11,7 +11,7 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = {},
+    ensure_installed = { "pyright", "ruff" },
     handlers = {
         lsp_zero.default_setup,
     },
