@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>rbf", function() require('refactoring').refactor('E
 require("telescope").load_extension("refactoring")
 
 vim.keymap.set(
-	{"n", "x"},
-	"<leader>rr",
-	function() require('telescope').extensions.refactoring.refactors() end
+    { "n", "x" },
+    "<leader>rr",
+    function() require('telescope').extensions.refactoring.refactors() end
 )
