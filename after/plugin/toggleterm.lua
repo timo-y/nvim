@@ -5,7 +5,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
 else
     -- Use bash for Linux and other Unix-like systems
-    shell = "/bin/bash" -- Adjust the path if necessary (e.g., /usr/bin/bash)
+    -- shell = "/bin/bash" -- Adjust the path if necessary (e.g., /usr/bin/bash)
+    shell = "/root/.nix-profile/bin/zsh"
 end
 
 require('toggleterm').setup({
