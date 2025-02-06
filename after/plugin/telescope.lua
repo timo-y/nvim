@@ -1,7 +1,7 @@
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>pf', function()
-    require('telescope.builtin').find_files({ hidden = true, no_ignore = true })
-end, { desc = "Find Files (including hidden, no ignore)" })
+    require('telescope.builtin').find_files({ hidden = true, no_ignore = false })
+end, { desc = "Find Files (including hidden)" })
 
 -- Open new tab and find fileo
 vim.keymap.set('n', '<leader>pt', function()
