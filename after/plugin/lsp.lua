@@ -76,5 +76,17 @@ require('mason-lspconfig').setup({
                 }
             })
         end,
+        pyright = function()
+            require('lspconfig').pyright.setup({
+                settings = {
+                    python = {
+                        analysis = {
+                            autoImportCompletions = true,
+                            useLibraryCodeForTypes = true,
+                        }
+                    }
+                }
+            })
+        end,
     },
 })
