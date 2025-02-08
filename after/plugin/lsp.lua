@@ -1,5 +1,8 @@
 local lsp_zero = require('lsp-zero')
 
+-- Apply the recommended preset before any other configurations
+lsp_zero.preset('recommended')
+
 -- Improve diagnostics appearance
 vim.diagnostic.config({
     virtual_text = true,
@@ -19,7 +22,6 @@ vim.diagnostic.config({
 lsp_zero.on_attach(function(client, bufnr)
     -- Basic keymaps
     lsp_zero.default_keymaps({ buffer = bufnr })
-    lsp_zero.preset('recommended')
 
     -- Additional keymaps for enhanced functionality
     local opts = { buffer = bufnr, remap = false }
