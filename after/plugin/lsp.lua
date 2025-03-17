@@ -84,10 +84,17 @@ require('mason-lspconfig').setup({
                     python = {
                         analysis = {
                             autoImportCompletions = true,
-                            useLibraryCodeForTypes = true,
+                            diagnosticMode = "workspace", -- Enables project-wide analysis
+                            autoSearchPaths = true,
+                            indexing = true
                         }
                     }
-                }
+                },
+                -- Optimize root directory detection
+                root_dir = require('lspconfig.util').root_pattern(
+                    "pyproject.toml", "setup.py", "setup.cfg",
+                    "requirements.txt", ".git"
+                ),
             })
         end,
     },
