@@ -49,10 +49,8 @@ fzf.setup({
 })
 -- Find files (including hidden)
 vim.keymap.set('n', '<leader>pf', function()
-    fzf.files({
-        cmd = "fd --type f --hidden --follow --exclude .git"
-    })
-end, { desc = "Find Files (including hidden)" })
+    fzf.files()
+end, { desc = "Find Files" })
 
 -- Open new tab and find files
 vim.keymap.set('n', '<leader>pt', function()
@@ -60,8 +58,8 @@ vim.keymap.set('n', '<leader>pt', function()
     fzf.files()
 end, { desc = "Open new Tab and Find Files" })
 
--- Find git files
-vim.keymap.set('n', '<C-p>', fzf.git_files, { desc = "Find Git-Files" })
+-- Live Grep
+vim.keymap.set('n', '<C-p>', fzf.live_grep, { desc = "Live Grep" })
 
 -- Grep with input
 vim.keymap.set('n', '<leader>ps', function()
