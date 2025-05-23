@@ -1,10 +1,9 @@
-require('mini.notify').setup()
 require('mini.icons').setup()
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                     AI and surround                     │
 --          ╰─────────────────────────────────────────────────────────╯
 require('mini.ai').setup()
-require('mini.surround').setup( -- No need to copy this inside `setup()`. Will be used automatically.
+require('mini.surround').setup(
     {
         mappings = {
             add = 'üa',            -- Add surrounding in Normal and Visual modes

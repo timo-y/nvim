@@ -9,15 +9,11 @@ fzf.setup({
     previewers = {
         builtin = {
             syntax = true
-        },
-        fzf_opts = {
-            ['-i'] = '' -- How do i make this case insesitive?
         }
     },
     files = {
-        fd_opts = '--type f --hidden --exclude node_modules --exclude .git --exclude .venv',
+        fd_opts = '--type f --hidden --exclude node_modules --exclude .git --exclude .venv --exec-batch ls -t',
         previewer = 'bat',
-        sort_lastused = true
     },
     buffers = {
         sort_lastused = true,
@@ -40,6 +36,8 @@ fzf.setup({
     },
     fzf_opts = {
         ['--tiebreak'] = 'index',
+        ['--layout'] = 'reverse-list',
+        ['-i'] = '',
     },
     defaults = {
         git_icons = true,
@@ -47,6 +45,7 @@ fzf.setup({
         color_icons = true,
     },
 })
+
 -- Find files (including hidden)
 vim.keymap.set('n', '<leader>pf', function()
     fzf.files()
