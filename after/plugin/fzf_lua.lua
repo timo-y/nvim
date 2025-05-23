@@ -5,8 +5,8 @@ fzf.setup({
         builtin = {
             syntax = false
         },
-        bat = {
-            cmd = "bat"
+        fzf_opts = {
+            ['--case'] = 'ignore',
         }
     }
 })
@@ -36,3 +36,28 @@ vim.keymap.set('n', '<leader>fb', fzf.buffers, { desc = "Find Buffers" })
 
 -- Find word under cursor
 vim.keymap.set('n', '<leader>fw', fzf.grep_cword, { desc = "Find Word under Cursor" })
+
+-- Find and replace in current file
+vim.keymap.set('n', '<leader>fr', function()
+    local search = vim.fn.input("Search > ")
+    if search == "" then
+        return
+    end
+    local replacement = vim.fn.input("Replace with > ")
+    if replacement ~= "" then
+        vim.cmd(":%s/" .. vim.fn.escape(search, "/") .. "/" .. vim.fn.escape(replacement, "/") .. "/gc")
+    end
+end, { desc = "Find and Replace in current file" })
+
+-- Replace word under cursor in whole file
+vim.keymap.set('n', '<leader>rw', function()
+    local word = vim.fn.expand('<cword>')
+    if word == "" then
+        print("No word under cursor")
+        return
+    end
+    local replacement = vim.fn.input("Replace '" .. word .. "' with > ")
+    if replacement ~= "" then
+        vim.cmd(":%s/\\<" .. vim.fn.escape(word, "/\\") .. "\\>/" .. vim.fn.escape(replacement, "/") .. "/gc")
+    end
+end, { desc = "Replace Word under cursor in whole file" })
