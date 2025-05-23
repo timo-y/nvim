@@ -5,7 +5,7 @@ require('lspconfig').lua_ls.setup({
                 globals = { 'vim' }
             }
         }
-}
+    }
 })
 require('lspconfig').pyright.setup({
     settings = {
@@ -23,4 +23,11 @@ require('lspconfig').pyright.setup({
         "pyproject.toml", "setup.py", "setup.cfg",
         "requirements.txt", ".git"
     ),
+})
+-- Set up LSP server
+require('lspconfig').pyright.setup({
+    on_attach = function(client, bufnr)
+        -- Enable completion triggered by <C-x><C-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    end,
 })

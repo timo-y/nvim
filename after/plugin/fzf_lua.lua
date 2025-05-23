@@ -6,7 +6,7 @@ fzf.setup({
             syntax = false
         },
         fzf_opts = {
-            ['--case'] = 'ignore',
+            ['-i'] = ''
         }
     }
 })
