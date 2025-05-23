@@ -6,7 +6,7 @@ fzf.setup({
             syntax = false
         },
         fzf_opts = {
-            ['-i'] = ''
+            ['-i'] = '' -- How do i make this case insesitive?
         }
     }
 })
