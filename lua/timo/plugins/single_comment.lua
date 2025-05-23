@@ -1,3 +1,0 @@
-return {
-    "lucastavaresa/SingleComment.nvim",
-}
