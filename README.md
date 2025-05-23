@@ -12,6 +12,7 @@ my nvim config
 ## windows
 - c compiler: download binaries here https://github.com/skeeto/w64devkit or here https://winlibs.com/#download-release, unzip and add to PATHs
 - fzf
+- bat
 - grep: download binaries here https://github.com/burntsushi/ripgrep and here https://github.com/sharkdp/fd, unzip and add to PATHs
 - npm: download https://nodejs.org/en/download, unzip and add to PATHs or install
 

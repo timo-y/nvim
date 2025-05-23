@@ -71,4 +71,3 @@ vim.keymap.set('n', '<leader>fb', fzf.buffers, { desc = "Find Buffers" })
 
 -- Find word under cursor
 vim.keymap.set('n', '<leader>fw', fzf.grep_cword, { desc = "Find Word under Cursor" })
-

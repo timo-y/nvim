@@ -56,8 +56,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Replace the word under the cursor throughout the file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Find files containing word under cursor and perform replacement in quickfix list
-vim.keymap.set("n", "<leader>pr", function()
+-- Helper function for vimgrep search across files
+local function vimgrep_search()
     local current_word = vim.fn.expand("<cword>")
 
     local search_word = vim.fn.input("Search for (default: " .. current_word .. "): ", current_word)
@@ -71,8 +71,19 @@ vim.keymap.set("n", "<leader>pr", function()
     end
 
     vim.cmd(string.format("vimgrep /%s/gj %s", search_word, search_pattern))
-
     vim.cmd("copen")
+
+    return search_word
+end
+
+-- Search only: Find files containing word under cursor
+vim.keymap.set("n", "<leader>po", function()
+    vimgrep_search()
+end, { desc = "Search for word under cursor across files (quickfix)" })
+
+-- Find files containing word under cursor and perform replacement in quickfix list
+vim.keymap.set("n", "<leader>pr", function()
+    local search_word = vimgrep_search()
 
     local replace_word = vim.fn.input("Replace with (default: " .. search_word .. "): ", search_word)
     if replace_word == "" then
