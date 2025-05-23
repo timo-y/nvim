@@ -1,14 +1,51 @@
 local fzf = require('fzf-lua')
 fzf.setup({
-    'fzf-native',
+    {
+        'fzf-native',
+        winopts = {
+            preview = { default = 'bat' },
+        },
+    },
     previewers = {
         builtin = {
-            syntax = false
+            syntax = true
         },
         fzf_opts = {
             ['-i'] = '' -- How do i make this case insesitive?
         }
-    }
+    },
+    files = {
+        fd_opts = '--type f --hidden --exclude node_modules --exclude .git --exclude .venv',
+        previewer = 'bat',
+        sort_lastused = true
+    },
+    buffers = {
+        sort_lastused = true,
+        previewer = 'bat',
+    },
+    grep = {
+        cmd = 'rg --line-number --column --no-heading --color=always --smart-case',
+        rg_opts = '--hidden --glob "!node_modules/*" --glob "!.git/*" --glob "!.venv/*"',
+        previewer = 'bat',
+    },
+    live_grep = {
+        cmd = 'rg --line-number --column --no-heading --color=always --smart-case',
+        rg_opts = '--hidden --glob "!node_modules/*" --glob "!.git/*" --glob "!.venv/*"',
+        previewer = 'bat',
+    },
+    git = {
+        files = {
+            previewer = 'bat',
+        },
+    },
+    fzf_opts = {
+        ['--tiebreak'] = 'index',
+    },
+    defaults = {
+        git_icons = true,
+        file_icons = true,
+        color_icons = true,
+    },
 })
 -- Find files (including hidden)
 vim.keymap.set('n', '<leader>pf', function()
