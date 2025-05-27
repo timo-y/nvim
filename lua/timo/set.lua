@@ -26,6 +26,8 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+vim.diagnostic.config({ virtual_text = true })
+
 vim.o.mouse = ""
 
 vim.opt.colorcolumn = "80"
