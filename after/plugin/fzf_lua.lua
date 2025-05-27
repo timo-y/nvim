@@ -13,7 +13,7 @@ fzf.setup({
         }
     },
     files = {
-        fd_opts = '--type f --hidden --exclude node_modules --exclude .git --exclude .venv --exec-batch ls -t',
+        fd_opts = '--type f --hidden --exclude node_modules --exclude .git --exclude .venv',
         previewer = 'bat',
     },
     buffers = {
@@ -41,7 +41,7 @@ fzf.setup({
         ['-i'] = '',
     },
     defaults = {
-        git_icons = true,
+        git_icons = false,
         file_icons = true,
         color_icons = true,
     },
