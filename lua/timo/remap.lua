@@ -133,3 +133,11 @@ vim.keymap.set("n", "<leader>o", vim.cmd.copen)
 
 -- Open Vertical Split
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
+
+-- Go to nex error with floating messaged
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end)
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end)

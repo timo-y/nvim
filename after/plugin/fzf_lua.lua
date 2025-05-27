@@ -2,6 +2,7 @@ local fzf = require('fzf-lua')
 fzf.setup({
     {
         'fzf-native',
+        -- 'default',
         winopts = {
             preview = { default = 'bat' },
         },

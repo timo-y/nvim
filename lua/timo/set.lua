@@ -1,6 +1,13 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- You have to turn this one on :)
+vim.opt.inccommand = "split"
+
+-- Best search settings :)
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -8,7 +15,11 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
+-- Don't have `o` add a comment
+vim.opt.formatoptions:remove "o"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
