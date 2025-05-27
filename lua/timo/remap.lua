@@ -132,4 +132,7 @@ vim.keymap.set("n", "<leader>h", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>o", vim.cmd.copen)
 
 -- Open Vertical Split
-vim.keymap.set("n", "<leader>v", ":vsplit<CR>")
+vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
+
+-- Split shortcut
+vim.keymap.set("n", "<A-h>", "<C-w>")
