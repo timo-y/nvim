@@ -9,6 +9,7 @@ require('mason').setup({
         }
     }
 })
+
 require('mason-lspconfig').setup({
     ensure_installed = {
         "pyright", -- Python
@@ -17,9 +18,16 @@ require('mason-lspconfig').setup({
         "html",    -- HTML
         "jsonls",  -- JSON
     },
-    dependencies = { 'saghen/blink.cmp' },
     handlers = {
-        -- Add custom settings for specific servers
+        -- Default handler for all servers
+        function(server_name)
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
+            require('lspconfig')[server_name].setup({
+                capabilities = capabilities,
+            })
+        end,
+
+        -- Your existing custom handlers
         lua_ls = function()
             local capabilities = require('blink.cmp').get_lsp_capabilities()
             require('lspconfig').lua_ls.setup({
@@ -41,13 +49,12 @@ require('mason-lspconfig').setup({
                     python = {
                         analysis = {
                             autoImportCompletions = true,
-                            diagnosticMode = "workspace", -- Enables project-wide analysis
+                            diagnosticMode = "workspace",
                             autoSearchPaths = true,
                             indexing = true
                         }
                     }
                 },
-                -- Optimize root directory detection
                 root_dir = require('lspconfig.util').root_pattern(
                     "pyproject.toml", "setup.py", "setup.cfg",
                     "requirements.txt", ".git"
