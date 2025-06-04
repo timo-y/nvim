@@ -15,8 +15,8 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = true
-vim.opt.linebreak = true
+vim.opt.wrap = false
+vim.opt.linebreak = false
 
 -- Don't have `o` add a comment
 vim.opt.formatoptions:remove "o"
