@@ -5,8 +5,6 @@ return {
     ---@type snacks.Config
     opts = {
         bigfile = { enabled = true },
-        dashboard = { enabled = false },
-        explorer = { enabled = false },
         indent = {
             enabled = true,
             animate = { enabled = false },
@@ -15,14 +13,8 @@ return {
             chunk = { enabled = true }
         },
         input = { enabled = true },
-        notifier = {
-            enabled = false,
-        },
         picker = { enabled = true },
         quickfile = { enabled = true },
-        scope = { enabled = false },
-        scroll = { enabled = false },
-        statuscolumn = { enabled = false },
         words = { enabled = true },
     },
     keys = {
