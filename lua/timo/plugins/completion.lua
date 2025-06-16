@@ -7,7 +7,9 @@ return
         keymap = {
             preset = 'default',
             ['<Tab>'] = { 'select_and_accept', 'fallback' },
-            ['<S-Tab>'] = { 'select_next', 'fallback' },
+            ['<C-j>'] = { 'select_next', 'fallback' },
+            ['<C-k>'] = { 'select_prev', 'fallback' },
+
         },
 
         appearance = {

@@ -27,12 +27,12 @@ require('mini.tabline').setup()
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                       INDENTSCOPE                       │
 --          ╰─────────────────────────────────────────────────────────╯
-require('mini.indentscope').setup({
-    draw = {
-        animation = require('mini.indentscope').gen_animation.none(),
-    }
-})
---          ╭─────────────────────────────────────────────────────────╮
+-- require('mini.indentscope').setup({
+--     draw = {
+--         animation = require('mini.indentscope').gen_animation.none(),
+--     }
+-- })
+-- --          ╭─────────────────────────────────────────────────────────╮
 --          │                          DIFF                           │
 --          ╰─────────────────────────────────────────────────────────╯
 require('mini.diff').setup()
