@@ -1,26 +1,35 @@
--- Autocompletion
-return {
-    'hrsh7th/nvim-cmp',
-    lazy = false,
-    event = { 'InsertEnter' },
-    dependencies = {
-        {
-            "L3MON4D3/LuaSnip",
-            lazy = false,
-            event = "InsertEnter",
-            config = function()
-                require("luasnip").setup({
-                    history = true,
-                    -- Disable unnecessary features during startup
-                    enable_autosnippets = false,
-                    store_selection_keys = "<Tab>"
-                })
-            end
+return
+{
+    'saghen/blink.cmp',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    version = '1.*',
+    opts = {
+        keymap = {
+            preset = 'default',
+            ['<Tab>'] = { 'select_and_accept', 'fallback' },
+            ['<C-j>'] = { 'select_next', 'fallback' },
+            ['<C-k>'] = { 'select_prev', 'fallback' },
+
         },
-        'saadparwaiz1/cmp_luasnip',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-nvim-lsp',
-        'onsails/lspkind.nvim'
-    }
+
+        appearance = {
+            nerd_font_variant = 'mono'
+        },
+
+        signature = { enabled = true },
+
+        completion = {
+            documentation = { auto_show = true },
+            menu = {
+                draw = {
+                    columns = {
+                        { "label",     "label_description", gap = 1 },
+                        { "kind_icon", "kind",              "source_name", gap = 1 }
+                    },
+                }
+            },
+        },
+        fuzzy = { implementation = "lua" },
+    },
+    opts_extend = { "sources.default" }
 }

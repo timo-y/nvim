@@ -24,4 +24,3 @@ end
 
 -- Apply terminal keymaps for toggleterm
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-

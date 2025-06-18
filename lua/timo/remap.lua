@@ -56,8 +56,8 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Replace the word under the cursor throughout the file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Find files containing word under cursor and perform replacement in quickfix list
-vim.keymap.set("n", "<leader>pr", function()
+-- Helper function for vimgrep search across files
+local function vimgrep_search()
     local current_word = vim.fn.expand("<cword>")
 
     local search_word = vim.fn.input("Search for (default: " .. current_word .. "): ", current_word)
@@ -71,8 +71,19 @@ vim.keymap.set("n", "<leader>pr", function()
     end
 
     vim.cmd(string.format("vimgrep /%s/gj %s", search_word, search_pattern))
-
     vim.cmd("copen")
+
+    return search_word
+end
+
+-- Search only: Find files containing word under cursor
+vim.keymap.set("n", "<leader>po", function()
+    vimgrep_search()
+end, { desc = "Search for word under cursor across files (quickfix)" })
+
+-- Find files containing word under cursor and perform replacement in quickfix list
+vim.keymap.set("n", "<leader>pr", function()
+    local search_word = vimgrep_search()
 
     local replace_word = vim.fn.input("Replace with (default: " .. search_word .. "): ", search_word)
     if replace_word == "" then
@@ -89,9 +100,62 @@ vim.keymap.set("n", "<leader>pr", function()
     vim.cmd(replace_cmd)
 end, { desc = "Search and replace for word under cursor with editable prompts and pattern" })
 
+-- Find and replace in current file
+vim.keymap.set('n', '<leader>fr', function()
+    local search = vim.fn.input("Search > ")
+    if search == "" then
+        return
+    end
+    local replacement = vim.fn.input("Replace with > ")
+    if replacement ~= "" then
+        vim.cmd(":%s/" .. vim.fn.escape(search, "/") .. "/" .. vim.fn.escape(replacement, "/") .. "/gc")
+    end
+end, { desc = "Find and Replace in current file" })
+
+-- Replace word under cursor in whole file
+vim.keymap.set('n', '<leader>rw', function()
+    local word = vim.fn.expand('<cword>')
+    if word == "" then
+        print("No word under cursor")
+        return
+    end
+    local replacement = vim.fn.input("Replace '" .. word .. "' with > ")
+    if replacement ~= "" then
+        vim.cmd(":%s/\\<" .. vim.fn.escape(word, "/\\") .. "\\>/" .. vim.fn.escape(replacement, "/") .. "/gc")
+    end
+end, { desc = "Replace Word under cursor in whole file" })
 
 -- Open floating window with diagnostics
 vim.keymap.set("n", "<leader>h", vim.diagnostic.open_float)
 
 -- Open Quickfix
 vim.keymap.set("n", "<leader>o", vim.cmd.copen)
+
+-- Go to nex error with floating messaged
+vim.keymap.set("n", "]d", function()
+    vim.diagnostic.jump({ count = 1, float = true })
+end)
+vim.keymap.set("n", "[d", function()
+    vim.diagnostic.jump({ count = -1, float = true })
+end)
+
+-- Open Vertical Split
+vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
+
+-- Split shortcut
+vim.keymap.set("n", "<A-h>", "<C-w>")
+
+-- LSP keymaps
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    end,
+})
