@@ -144,6 +144,10 @@ vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
 
 -- Split shortcut
 vim.keymap.set("n", "<A-h>", "<C-w>")
+vim.api.nvim_set_keymap('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- LSP keymaps
 vim.api.nvim_create_autocmd('LspAttach', {
