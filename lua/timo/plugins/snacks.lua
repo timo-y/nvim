@@ -13,7 +13,10 @@ return {
             chunk = { enabled = true }
         },
         input = { enabled = true },
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+            main = { file = false }
+        },
         quickfile = { enabled = true },
         words = { enabled = true },
     },

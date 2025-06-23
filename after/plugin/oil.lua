@@ -60,10 +60,10 @@ require("oil").setup({
     keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
-        ["<leader>s"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+        ["<leader>vv"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
         ["<leader>h"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
         ["<leader>t"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
-        ["<leader>l"] = "actions.preview",
+        ["<C-p>"] = "actions.preview",
         ["<C-c>"] = "actions.close",
         ["<C-l>"] = "actions.refresh",
         ["-"] = "actions.parent",
