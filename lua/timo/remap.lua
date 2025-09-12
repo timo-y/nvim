@@ -129,18 +129,18 @@ end, { desc = 'Replace Word under cursor in whole file' })
 vim.keymap.set('n', '<leader>h', vim.diagnostic.open_float)
 
 -- Open Quickfix
-vim.keymap.set('n', '<leader>o', vim.cmd.copen, {desc='[O]pen Quickfix'})
+vim.keymap.set('n', '<leader>o', vim.cmd.copen, { desc = '[O]pen Quickfix' })
 
 -- Go to nex error with floating messaged
 vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump { count = 1, float = true }
-end, {desc='Go to next [d]iagnostic message'})
+end, { desc = 'Go to next [d]iagnostic message' })
 vim.keymap.set('n', '[d', function()
   vim.diagnostic.jump { count = -1, float = true }
-end, {desc='Go to previous [d]iagnostic message'})
+end, { desc = 'Go to previous [d]iagnostic message' })
 
 -- Open Vertical Split
-vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', {desc='Open [v]ertical [s]plit'})
+vim.keymap.set('n', '<leader>vs', ':vsplit<CR>', { desc = 'Open [v]ertical [s]plit' })
 
 -- Split shortcut
 vim.api.nvim_set_keymap('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
@@ -149,16 +149,16 @@ vim.api.nvim_set_keymap('n', '<A-k>', '<C-w>k', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
 
 -- LSP keymaps
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+--   callback = function(ev)
+--     local opts = { buffer = ev.buf }
+--     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+--     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+--     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+--     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+--     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+--     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+--     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+--   end,
+-- })
