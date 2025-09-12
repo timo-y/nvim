@@ -78,7 +78,11 @@ return {
     -----------------------------------------------------------------
     --  Diff – visual diff of the current buffer vs. saved file
     -----------------------------------------------------------------
-    -- require('mini.diff').setup()
+    local diff = require 'mini.diff'
+    diff.setup {
+      -- Disabled by default
+      source = diff.gen_source.none(),
+    }
 
     -----------------------------------------------------------------
     --  IndentScope – optional, but many people like it.
