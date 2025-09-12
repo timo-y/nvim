@@ -85,11 +85,11 @@ return {
     --  The block is commented out in your original snippet; you can
     --  enable it by removing the surrounding `--[[ ... ]]` comment.
     -----------------------------------------------------------------
-    require('mini.indentscope').setup {
-      draw = {
-        -- Disable the animated “smooth” drawing (keeps it crisp and fast)
-        animation = require('mini.indentscope').gen_animation.none(),
-      },
-    }
+    -- require('mini.indentscope').setup {
+    --   draw = {
+    --     -- Disable the animated “smooth” drawing (keeps it crisp and fast)
+    --     animation = require('mini.indentscope').gen_animation.none(),
+    --   },
+    -- }
   end,
 }

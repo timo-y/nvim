@@ -8,9 +8,9 @@ return {
     indent = {
       enabled = true,
       animate = { enabled = false },
-      indent = { enabled = false },
-      scope = { enabled = false },
-      chunk = { enabled = true },
+      indent = { enabled = true },
+      scope = { enabled = true },
+      chunk = { enabled = false },
     },
     input = { enabled = true },
     picker = {
