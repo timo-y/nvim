@@ -5,7 +5,7 @@ require('codecompanion').setup {
       openwebui = function()
         return require('codecompanion.adapters').extend('openai_compatible', {
           env = {
-            url = 'http://172.17.30.3:3000/api',
+            url = 'http://192.168.178.40:3000/api',
             api_key = 'sk-b759f2c500a4448ab64c6a94851b3303',
           },
           schema = {
@@ -20,5 +20,6 @@ require('codecompanion').setup {
   strategies = {
     chat = { adapter = 'openwebui' },
     inline = { adapter = 'openwebui' },
+    cmd = { adapter = 'openwebui' },
   },
 }
