@@ -32,7 +32,7 @@ return {
 
     require('toggleterm').setup {
       size = 15,
-      open_mapping = [[<C-x>]],
+      open_mapping = [[<M-x>]],
       autochdir = true,
       direction = 'horizontal',
       shell = shell,
