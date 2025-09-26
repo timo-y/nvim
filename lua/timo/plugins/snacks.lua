@@ -338,6 +338,29 @@ return {
       end,
       desc = 'Goto T[y]pe Definition',
     },
+
+    {
+      '<leader>rn',
+      function()
+        local clients = vim.lsp.get_active_clients { bufnr = 0 }
+        local has_rename = false
+
+        for _, client in ipairs(clients) do
+          if client.server_capabilities.renameProvider then
+            has_rename = true
+            break
+          end
+        end
+
+        if has_rename then
+          vim.lsp.buf.rename()
+        else
+          vim.notify('No LSP client with rename capability', vim.log.levels.WARN)
+        end
+      end,
+      desc = 'Rename variable',
+    },
+
     {
       '<leader>ss',
       function()
