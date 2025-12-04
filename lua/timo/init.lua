@@ -1,6 +1,6 @@
 require("timo.set")
 require("timo.remap")
-require("timo.lazy")
+-- require("timo.lazy")
 require("timo.clipboard")
 require("timo.format_on_save")
 require("timo.diagnostics")
