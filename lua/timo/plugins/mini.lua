@@ -10,9 +10,10 @@ return {
   version = '*', -- always get the latest stable tag
   -- Load the plugin as soon as Neovim starts (VeryLazy) or when any
   -- of the modules is first used.  Feel free to change to `"event = "BufRead"` etc.
-  lazy = false, -- set to true if you want true lazy‑load
+  lazy = true, -- set to true if you want true lazy‑load
   -- If you *do* want lazy loading, you can use:
   -- event = "VeryLazy",
+  event = 'VeryLazy',
 
   -- ------------------------------------------------------------
   --  Configuration that runs after the plugin is loaded.
