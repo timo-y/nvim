@@ -55,3 +55,5 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.g.mapleader = ' '
+
+-- vim: ts=2 sts=2 sw=2 et

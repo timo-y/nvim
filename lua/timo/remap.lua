@@ -1,3 +1,13 @@
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 -- Open file explorer
 vim.keymap.set('n', '<leader>pm', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
@@ -125,8 +135,9 @@ vim.keymap.set('n', '<leader>rw', function()
   end
 end, { desc = 'Replace Word under cursor in whole file' })
 
--- Open floating window with diagnostics
-vim.keymap.set('n', '<leader>h', vim.diagnostic.open_float)
+-- Open diagnostics
+vim.keymap.set('n', '<leader>h', vim.diagnostic.open_float, { desc = 'Open diagnostic [h]int window' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Open Quickfix
 vim.keymap.set('n', '<leader>o', vim.cmd.copen, { desc = '[O]pen Quickfix' })
@@ -162,3 +173,16 @@ vim.api.nvim_set_keymap('n', '<A-l>', '<C-w>l', { noremap = true, silent = true 
 --     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 --   end,
 -- })
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.hl.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+-- vim: ts=2 sts=2 sw=2 et

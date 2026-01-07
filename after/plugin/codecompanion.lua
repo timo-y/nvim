@@ -1,5 +1,4 @@
 require('codecompanion').setup {
-
   adapters = {
     http = {
       openwebui = function()
