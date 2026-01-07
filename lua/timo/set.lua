@@ -48,7 +48,7 @@ vim.opt.timeoutlen = 300
 vim.opt.mouse = 'a'
 
 vim.opt.colorcolumn = '80'
-vim.cmd [[highlight ColorColumn ctermbg=0 guibg=#222222]]
+vim.cmd [[highlight ColorColumn ctermbg=0 guibg=#262836]]
 
 -- whitespace handling
 vim.o.list = true
