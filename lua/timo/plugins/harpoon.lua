@@ -78,7 +78,7 @@ return {
       mode = 'n',
     },
     {
-      '<C-n>',
+      '<C-z>',
       function()
         require('harpoon'):list():next()
       end,
