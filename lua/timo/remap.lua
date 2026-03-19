@@ -159,6 +159,17 @@ vim.api.nvim_set_keymap("n", "<A-j>", "<C-w>j", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("n", "<A-k>", "<C-w>k", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<A-l>", "<C-w>l", { noremap = true, silent = true })
 
+-- Window shortcut
+vim.api.nvim_set_keymap('n', '<leader>tt', ':tabnew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>1', '1gt', { noremap = true, silent = true, desc = 'Go to window 1' })
+vim.api.nvim_set_keymap('n', '<leader>2', '2gt', { noremap = true, silent = true, desc = 'Go to window 2' })
+vim.api.nvim_set_keymap('n', '<leader>3', '3gt', { noremap = true, silent = true, desc = 'Go to window 3' })
+vim.api.nvim_set_keymap('n', '<leader>4', '4gt', { noremap = true, silent = true, desc = 'Go to window 4' })
+vim.api.nvim_set_keymap('n', '<leader>5', '5gt', { noremap = true, silent = true, desc = 'Go to window 5' })
+vim.api.nvim_set_keymap('n', '<leader>6', '6gt', { noremap = true, silent = true, desc = 'Go to window 6' })
+vim.api.nvim_set_keymap('n', '<leader>7', '7gt', { noremap = true, silent = true, desc = 'Go to window 7' })
+vim.api.nvim_set_keymap('n', '<leader>8', '8gt', { noremap = true, silent = true, desc = 'Go to window 8' })
+vim.api.nvim_set_keymap('n', '<leader>9', '9gt', { noremap = true, silent = true, desc = 'Go to window 9' })
 -- LSP keymaps
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
