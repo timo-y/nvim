@@ -1,3 +1,5 @@
+vim.g.mapleader = ' '
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 -- Show which line your cursor is on
@@ -57,7 +59,4 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Ignore these dirs
 vim.opt.wildignore:append '**/venv/**'
 vim.opt.wildignore:append '**/node_modules/**'
-
-vim.g.mapleader = ' '
-
 -- vim: ts=2 sts=2 sw=2 et

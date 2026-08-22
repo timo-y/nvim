@@ -1,25 +1,22 @@
-return {
-  'LudoPinelli/comment-box.nvim',
-  -- Load it on any of the keys you’ll use – this makes the plugin lazy‑loaded
-  keys = {
-    { '<Leader>cb', '<Cmd>CBccbox<CR>', mode = { 'n', 'v' }, desc = 'Comment‑box: Create box' },
-    { '<Leader>ct', '<Cmd>CBllline<CR>', mode = { 'n', 'v' }, desc = 'Comment‑box: Named part' },
-    { '<Leader>cl', '<Cmd>CBline<CR>', mode = 'n', desc = 'Comment‑box: Simple line' },
-    -- Uncomment the line below if you also want the insert‑mode shortcut
-    -- { "<M-l>",       "<Cmd>CBline<CR>",      mode = "i",          desc = "Comment‑box: Insert line" },
-    { '<Leader>cm', '<Cmd>CBllbox14<CR>', mode = { 'n', 'v' }, desc = 'Comment‑box: Marked comment' },
-    -- Optional: quick delete of the current box
-    { '<Leader>cd', '<Cmd>CBd<CR>', mode = { 'n', 'v' }, desc = 'Comment‑box: Delete box' },
-  },
-
-  -- If you need to tweak the plugin itself you can do it here.
-  -- The plugin ships with its own defaults, so we only call `setup()` when
-  -- you have custom options.
-  config = function()
-    -- Example of custom plugin options (feel free to delete if you don’t need them)
-    require('comment-box').setup {
-      -- box_width = 80,        -- default width
-      -- highlight = "Comment", -- highlight group for the border
-    }
-  end,
+-- 1. Install the plugin
+vim.pack.add {
+  'https://github.com/LudoPinelli/comment-box.nvim',
 }
+
+-- 2. Configure it (replaces `config = function() ... end`)
+require('comment-box').setup {
+  -- box_width = 80,        -- default width
+  -- highlight = "Comment", -- highlight group for the border
+}
+
+-- 3. Keymaps (replaces `keys`)
+local map = vim.keymap.set
+
+map({ 'n', 'v' }, '<Leader>cb', '<Cmd>CBccbox<CR>', { desc = 'Comment-box: Create box' })
+map({ 'n', 'v' }, '<Leader>ct', '<Cmd>CBllline<CR>', { desc = 'Comment-box: Named part' })
+map('n', '<Leader>cl', '<Cmd>CBline<CR>', { desc = 'Comment-box: Simple line' })
+-- Uncomment the line below if you also want the insert-mode shortcut
+-- map('i', '<M-l>', '<Cmd>CBline<CR>', { desc = 'Comment-box: Insert line' })
+map({ 'n', 'v' }, '<Leader>cm', '<Cmd>CBllbox14<CR>', { desc = 'Comment-box: Marked comment' })
+-- Optional: quick delete of the current box
+map({ 'n', 'v' }, '<Leader>cd', '<Cmd>CBd<CR>', { desc = 'Comment-box: Delete box' })
