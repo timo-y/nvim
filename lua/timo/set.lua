@@ -51,8 +51,12 @@ vim.opt.colorcolumn = '80'
 vim.cmd [[highlight ColorColumn ctermbg=0 guibg=#232136]]
 
 -- whitespace handling
-vim.o.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Ignore these dirs
+vim.opt.wildignore:append '**/venv/**'
+vim.opt.wildignore:append '**/node_modules/**'
 
 vim.g.mapleader = ' '
 
