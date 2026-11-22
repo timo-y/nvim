@@ -32,9 +32,49 @@ require('markview').setup {
 
   markdown = {
     headings = presets.headings.glow,
-    checkboxes = presets.checkboxes.nerd,
     tables = presets.tables.rounded,
     block_quotes = presets.block_quotes.obsidian,
+  },
+
+  -- NOTE: checkboxes live under `markdown_inline`, not `markdown`.
+  markdown_inline = {
+    checkboxes = presets.checkboxes.nerd,
+  },
+
+  -- `[ ]` / `[x]` only count as checkboxes when they directly follow a list
+  -- marker (`- [ ]`). Anywhere else (`- Foo: [ ] a, [x] b`) markview parses
+  -- them as a "shortcut link" and renders a link icon. This custom renderer
+  -- draws the configured checkbox glyph instead.
+  renderers = {
+    inline_link_shortcut = function(ns, buffer, item)
+      local label = item.label or (item.text and item.text[1]:match '^%[(.-)%]$') or ''
+      local range = item.range
+      local checkbox = require('markview.spec').get({ 'markdown_inline', 'checkboxes' }, { fallback = nil })
+
+      local opts
+      if label == ' ' then
+        opts = checkbox and checkbox.unchecked
+      elseif label == 'x' or label == 'X' then
+        opts = checkbox and checkbox.checked
+      elseif checkbox then
+        opts = checkbox[label]
+      end
+
+      if not opts or range.row_start ~= range.row_end then
+        -- Not checkbox-like, or multi-line: keep default link rendering.
+        return require('markview.renderers.markdown_inline').link_shortcut(buffer, item)
+      end
+
+      vim.api.nvim_buf_set_extmark(buffer, ns, range.row_start, range.col_start, {
+        undo_restore = false,
+        invalidate = true,
+        end_row = range.row_end,
+        end_col = range.col_end,
+        conceal = '',
+        virt_text_pos = 'inline',
+        virt_text = { { opts.text, opts.hl } },
+      })
+    end,
   },
 }
 
